@@ -252,7 +252,7 @@ export class MeshLoader {
          */
         const keywords = {
             newmtl(parts, unparsedArgs) {
-                material = {};
+                material = {name: unparsedArgs};
                 materials[unparsedArgs] = material;
             },
             Ns(parts) {
@@ -563,6 +563,7 @@ function parseLines(text, keywords) {
 
     // Loop through all the lines splitted above
     for (let lineNo = 0; lineNo < lines.length; ++lineNo) {
+		
         const line = lines[lineNo].trim(); // Trim the line removing whitespaces at the beginning and end
 
         // Ignore empty lines and comments
